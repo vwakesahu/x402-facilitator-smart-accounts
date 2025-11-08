@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.24.0",
-    "@types/express": "^4.17.21",
+    "@types/express": "^5.0.1",
     "@types/node": "^22.13.4",
     "eslint": "^9.24.0",
     "eslint-plugin-jsdoc": "^50.6.9",

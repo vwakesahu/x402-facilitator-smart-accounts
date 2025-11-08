@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "installCommand": "cd ../.. && pnpm install && cd ../../typescript/packages/x402 && pnpm build",
+  "installCommand": "cd ../.. && pnpm install && cd ../../typescript/packages/x402 && pnpm build && cd ../../../../examples/typescript/facilitator",
   "builds": [
     {
       "src": "index.ts",

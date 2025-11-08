@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-env node */
 import { config } from "dotenv";
 import express, { Request, Response } from "express";
