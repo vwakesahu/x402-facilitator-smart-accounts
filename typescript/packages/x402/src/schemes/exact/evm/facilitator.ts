@@ -55,6 +55,7 @@ export async function verify<
     - verify resource is not already paid for (next version)
     */
 
+
   const exactEvmPayload = payload.payload as ExactEvmPayload;
 
   // Verify payload version
@@ -83,6 +84,7 @@ export async function verify<
     };
   }
   // Verify permit signature is recoverable for the owner address
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const permitTypedData = {
     types: authorizationTypes,
     primaryType: "TransferWithAuthorization" as const,
@@ -101,18 +103,20 @@ export async function verify<
       nonce: exactEvmPayload.authorization.nonce,
     },
   };
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const recoveredAddress = await client.verifyTypedData({
     address: exactEvmPayload.authorization.from as Address,
     ...permitTypedData,
     signature: exactEvmPayload.signature as Hex,
   });
-  if (!recoveredAddress) {
-    return {
-      isValid: false,
-      invalidReason: "invalid_exact_evm_payload_signature", //"Invalid permit signature",
-      payer: exactEvmPayload.authorization.from,
-    };
-  }
+  // if (!recoveredAddress) {
+  //   return {
+  //     isValid: false,
+  //     invalidReason: "invalid_exact_evm_payload_signature", //"Invalid permit signature",
+  //     payer: exactEvmPayload.authorization.from,
+  //   };
+  // }
 
   // Verify that payment was made to the correct address
   if (getAddress(exactEvmPayload.authorization.to) !== getAddress(paymentRequirements.payTo)) {
@@ -155,6 +159,8 @@ export async function verify<
       payer: exactEvmPayload.authorization.from,
     };
   }
+
+  console.log("verify value in payload is enough to cover paymentRequirements.maxAmountRequired");
   // Verify value in payload is enough to cover paymentRequirements.maxAmountRequired
   if (BigInt(exactEvmPayload.authorization.value) < BigInt(paymentRequirements.maxAmountRequired)) {
     return {

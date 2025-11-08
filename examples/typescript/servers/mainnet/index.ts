@@ -1,8 +1,8 @@
 import { config } from "dotenv";
 import express from "express";
+import cors from "cors";
 import { paymentMiddleware } from "x402-express";
 // Import the facilitator from the x402 package to use the mainnet facilitator
-import { facilitator } from "@coinbase/x402";
 
 config();
 
@@ -16,6 +16,8 @@ if (!payToAddress || !process.env.CDP_API_KEY_ID || !process.env.CDP_API_KEY_SEC
 
 const app = express();
 
+app.use(cors({ origin: "*" }));
+
 app.use(
   paymentMiddleware(
     payToAddress,
@@ -27,7 +29,7 @@ app.use(
       },
     },
     // Pass the mainnet facilitator to the payment middleware
-    facilitator,
+    { url: "http://localhost:3002" },
   ),
 );
 
