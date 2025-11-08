@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "buildCommand": "cd ../.. && pnpm --filter x402 build",
+  "builds": [
+    {
+      "src": "index.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.ts"
+    }
+  ]
+}
+
