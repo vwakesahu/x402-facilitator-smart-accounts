@@ -1,6 +1,7 @@
 {
   "version": 2,
   "installCommand": "cd ../.. && pnpm install --shamefully-hoist && cd ../../typescript/packages/x402 && pnpm build",
+  "buildCommand": "cd ../../../../examples/typescript/facilitator && pnpm build",
   "builds": [
     {
       "src": "index.ts",

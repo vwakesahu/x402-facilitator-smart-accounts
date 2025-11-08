@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx index.ts",
-    "build": "echo 'Build complete - TypeScript will be handled by Vercel'",
+    "build": "mkdir -p node_modules/x402 && cp -r ../../../typescript/packages/x402/dist node_modules/x402/ && cp ../../../typescript/packages/x402/package.json node_modules/x402/",
     "start": "tsx index.ts",
     "solana": "tsx solana.ts",
     "format": "prettier -c .prettierrc --write \"**/*.{ts,js,cjs,json,md}\"",
